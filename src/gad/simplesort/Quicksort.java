@@ -19,9 +19,9 @@ public class Quicksort extends SortAlgorithm {
 		}
 		result.startQuicksort(numbers, from, to);
 
-		int selectedPivot = to;
+		int selectedPivot = pivotFinder.findPivot(numbers, from, to);
 
-		int p = numbers[to];
+		int p = selectedPivot;
 		int indexL = from - 1;
 		int indexR = to;
 		while (indexL < indexR) {

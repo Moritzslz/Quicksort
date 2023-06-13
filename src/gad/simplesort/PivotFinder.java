@@ -26,8 +26,7 @@ public interface PivotFinder {
 
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-				// TODO
-				return 0;
+				return (to - from) / 2 + from;
 			}
 
 			@Override
