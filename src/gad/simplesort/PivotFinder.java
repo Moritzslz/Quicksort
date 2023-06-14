@@ -1,5 +1,6 @@
 package gad.simplesort;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public interface PivotFinder {
@@ -42,8 +43,7 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-				// TODO
-				return 0;
+				return random.nextInt(from, to+1);
 			}
 
 			@Override
@@ -57,8 +57,26 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-				// TODO
-				return 0;
+				int median = -1;
+				int length = to - from + 1;
+				int[] temp = new int[length];
+
+				if (length > numberOfConsideredElements)
+					length = numberOfConsideredElements;
+
+				for(int i = 0; i < length; i++) {
+					temp[i] = numbers[to+i];
+				}
+
+				Arrays.sort(temp);
+
+				if (length % 2 == 0) {
+					median = (temp[length/2-1] + temp[length/2]) / 2;
+				} else {
+					median = temp[length/2];
+				}
+
+				return median;
 			}
 
 			@Override
