@@ -53,7 +53,7 @@ public interface PivotFinder {
 		};
 	}
 
-	static PivotFinder getmedianValuePivotFront(int numberOfConsideredElements) {
+	static PivotFinder getMedianPivotFront(int numberOfConsideredElements) {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
