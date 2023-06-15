@@ -60,13 +60,16 @@ public interface PivotFinder {
 
 				int medianValue = 0;
 				int medianIndex = 0;
-				int length = to - from + 1;
+
+				int length = numberOfConsideredElements;
 				int[] temp = new int[length];
 
-				if (length > numberOfConsideredElements)
-					length = numberOfConsideredElements;
+				if (numberOfConsideredElements == 1) {
+					return from;
+				}
 
-				for(int i = 0; i < length; i++) {
+
+				for(int i = 0; i < length && i <= to; i++) {
 					temp[i] = numbers[from+i];
 				}
 
@@ -75,7 +78,7 @@ public interface PivotFinder {
 				if (length % 2 == 0) {
 					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
 				} else {
-					medianValue = temp[length/2];
+					medianValue = temp[(length-1)/2];
 				}
 
 				for(int i = from; i < from+length; i++) {
@@ -86,34 +89,6 @@ public interface PivotFinder {
 				}
 				return medianIndex;
 
-				// Approach: calculating the average of all elements and then looping through
-				// all elements searching for the biggest value which is still smaller than the average.
-				/*
-				int medianValue = 0;
-				int medianIndex = 0;
-				int average = 0;
-				int length = to - from + 1;
-
-				if (length > numberOfConsideredElements)
-					length = numberOfConsideredElements;
-
-				// Calculating average
-				for (int i = from; i < from+length; i++) {
-					average += numbers[i];
-				}
-				average /= length;
-
-				// Finding median
-				for (int i = from; i < from+length; i++) {
-					if (numbers[i] < average && numbers[i] > medianValue) {
-						medianValue = numbers[i];
-						medianIndex = i;
-					}
-				}
-
-				return medianIndex;
-
-				 */
 			}
 
 			@Override
