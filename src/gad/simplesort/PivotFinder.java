@@ -88,8 +88,8 @@ public interface PivotFinder {
 */
 				// Approach: calculating the average of all elements and then looping through
 				// all elements searching for the biggest value which is still smaller than the average.
-				int medianValue = -1;
-				int medianIndex = -1;
+				int medianValue = 0;
+				int medianIndex = 0;
 				int average = 0;
 				int length = to - from + 1;
 

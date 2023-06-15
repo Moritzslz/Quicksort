@@ -20,8 +20,10 @@ public class Quicksort extends SortAlgorithm {
 		result.startQuicksort(numbers, from, to);
 
 		int selectedPivot = pivotFinder.findPivot(numbers, from, to);
+		// Switching the Pivot to the last index
+		swap(numbers, selectedPivot, to);
 
-		int p = selectedPivot;
+		int p = numbers[to];
 		int indexL = from - 1;
 		int indexR = to;
 		while (indexL < indexR) {

@@ -28,7 +28,8 @@ public final class SortingComparison {
         // compareSelectionSortSizeQuicksort();
         // compareSelectionSortSizeMergesort();
         // compareSelectionsortSizeDualPivotQuicksort();
-        compareBestAlgorithms();
+        //compareBestAlgorithms();
+        comparePivotSelectionQuicksort();
     }
 
     private static void compareAlgorithms(SortAlgorithm[] algorithms) {
@@ -36,7 +37,7 @@ public final class SortingComparison {
         int[] numbersWithMultiples = getRandomArray(ARRAY_SIZE, GUARANTEED_MULTIPLES);
         // partiallySortArrayBlocks(numbers, SORTED_BLOCK_SIZE);
         // partiallySortArrayRandomValues(numbers, SORTED_RANDOM_ELEMENTS_PERCENT);
-        // reverseArray(numbers);
+        // reverseArray(numbers)
         compareAlgorithms(algorithms, numbers, REPETITIONS);
     }
 
