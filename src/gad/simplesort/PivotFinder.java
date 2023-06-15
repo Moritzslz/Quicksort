@@ -127,7 +127,7 @@ public interface PivotFinder {
 					medianValue = temp[(length-1)/2];
 				}
 
-				for(int i = from; i <= to; i++) {
+				for(int i = from; i <= to; i += distance) {
 					if(numbers[i] == medianValue) {
 						medianIndex = i;
 						break;
