@@ -58,8 +58,8 @@ public interface PivotFinder {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
 
-				int medianValue = -1;
-				int medianIndex = -1;
+				int medianValue = 0;
+				int medianIndex = 0;
 				int length = to - from + 1;
 				int[] temp = new int[length];
 
