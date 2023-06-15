@@ -68,11 +68,7 @@ public interface PivotFinder {
 					return from;
 				}
 
-
-				for(int i = 0; i < length && i <= to; i++) {
-					temp[i] = numbers[from+i];
-				}
-
+				temp = Arrays.copyOfRange(numbers, from, from+numberOfConsideredElements);
 				Arrays.sort(temp);
 
 				if (length % 2 == 0) {
@@ -81,7 +77,7 @@ public interface PivotFinder {
 					medianValue = temp[(length-1)/2];
 				}
 
-				for(int i = from; i < from+length; i++) {
+				for(int i = from; i <= to; i++) {
 					if(numbers[i] == medianValue) {
 						medianIndex = i;
 						break;
@@ -114,9 +110,10 @@ public interface PivotFinder {
 					return from;
 				}
 
-
-				for(int i = 0; i < length && i <= to; i += distance) {
-					temp[i] = numbers[from+i];
+				int k = 0;
+				for(int i = 0; i <= to && k < length; i += distance) {
+					temp[k] = numbers[from+i];
+					k++;
 				}
 
 				Arrays.sort(temp);
@@ -127,7 +124,7 @@ public interface PivotFinder {
 					medianValue = temp[(length-1)/2];
 				}
 
-				for(int i = from; i < from+length; i++) {
+				for(int i = from; i <= to; i++) {
 					if(numbers[i] == medianValue) {
 						medianIndex = i;
 						break;
