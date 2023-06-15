@@ -57,7 +57,7 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-
+/*
 				int medianValue = -1;
 				int medianIndex = -1;
 				int length = to - from + 1;
@@ -85,21 +85,32 @@ public interface PivotFinder {
 					}
 				}
 				return medianIndex;
-				 /*
+*/
 				// Approach: calculating the average of all elements and then looping through
 				// all elements searching for the biggest value which is still smaller than the average.
 				int medianValue = -1;
+				int medianIndex = -1;
+				int average = 0;
 				int length = to - from + 1;
 
 				if (length > numberOfConsideredElements)
 					length = numberOfConsideredElements;
 
-				//
-				for(int i = from; i < length; i++) {
-					temp[i] = numbers[to+i];
+				// Calculating average
+				for (int i = from; i < from+length; i++) {
+					average += numbers[i];
+				}
+				average /= length;
+
+				// Finding median
+				for (int i = from; i < from+length; i++) {
+					if (numbers[i] < average && numbers[i] > medianValue) {
+						medianValue = numbers[i];
+						medianIndex = i;
+					}
 				}
 
-				  */
+				return medianIndex;
 			}
 
 			@Override
