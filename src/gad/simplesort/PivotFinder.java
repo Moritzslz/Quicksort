@@ -68,7 +68,7 @@ public interface PivotFinder {
 					return from;
 				}
 
-				for(int i = 0; i <= to && from + i <= to && i < length; i ++) {
+				for(int i = 0; from + i <= to && i < length; i ++) {
 					temp[i] = numbers[from + i];
 				}
 
