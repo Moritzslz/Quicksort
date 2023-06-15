@@ -68,7 +68,7 @@ public interface PivotFinder {
 					return from;
 				}
 
-				temp = Arrays.copyOfRange(numbers, from, from+numberOfConsideredElements);
+				temp = Arrays.copyOfRange(numbers, from, from+numberOfConsideredElements-1);
 				Arrays.sort(temp);
 
 				if (length % 2 == 0) {
