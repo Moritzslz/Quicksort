@@ -79,8 +79,8 @@ public interface PivotFinder {
 				}
 
 				for(int i = from; i < from+length; i++) {
-					if(numbers[from] == medianValue) {
-						medianIndex = from;
+					if(numbers[i] == medianValue) {
+						medianIndex = i;
 						break;
 					}
 				}
