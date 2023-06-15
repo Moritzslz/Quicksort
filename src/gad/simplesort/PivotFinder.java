@@ -102,8 +102,39 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-				// TODO
-				return 0;
+
+				int medianValue = 0;
+				int medianIndex = 0;
+				int distance = (int) Math.ceil((to - from + 1) / numberOfConsideredElements);
+
+				int length = numberOfConsideredElements;
+				int[] temp = new int[length];
+
+				if (numberOfConsideredElements == 1) {
+					return from;
+				}
+
+
+				for(int i = 0; i < length && i <= to; i += distance) {
+					temp[i] = numbers[from+i];
+				}
+
+				Arrays.sort(temp);
+
+				if (length % 2 == 0) {
+					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
+				} else {
+					medianValue = temp[(length-1)/2];
+				}
+
+				for(int i = from; i < from+length; i++) {
+					if(numbers[i] == medianValue) {
+						medianIndex = i;
+						break;
+					}
+				}
+				return medianIndex;
+
 			}
 
 			@Override
