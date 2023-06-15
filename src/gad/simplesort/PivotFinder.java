@@ -53,12 +53,13 @@ public interface PivotFinder {
 		};
 	}
 
-	static PivotFinder getMedianPivotFront(int numberOfConsideredElements) {
+	static PivotFinder getmedianValuePivotFront(int numberOfConsideredElements) {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
 
-				int median = -1;
+				int medianValue = -1;
+				int medianIndex = -1;
 				int length = to - from + 1;
 				int[] temp = new int[length];
 
@@ -72,16 +73,22 @@ public interface PivotFinder {
 				Arrays.sort(temp);
 
 				if (length % 2 == 0) {
-					median = (temp[length/2-1] + temp[length/2]) / 2;
+					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
 				} else {
-					median = temp[length/2];
+					medianValue = temp[length/2];
 				}
 
-				return median;
+				for(int i = from; i < from+length; i++) {
+					if(numbers[from] == medianValue) {
+						medianIndex = from;
+						break;
+					}
+				}
+				return medianIndex;
 				 /*
 				// Approach: calculating the average of all elements and then looping through
 				// all elements searching for the biggest value which is still smaller than the average.
-				int median = -1;
+				int medianValue = -1;
 				int length = to - from + 1;
 
 				if (length > numberOfConsideredElements)
@@ -97,12 +104,12 @@ public interface PivotFinder {
 
 			@Override
 			public String toString() {
-				return "The median of the first " + numberOfConsideredElements + " elements";
+				return "The medianValue of the first " + numberOfConsideredElements + " elements";
 			}
 		};
 	}
 
-	static PivotFinder getMedianPivotDistributed(int numberOfConsideredElements) {
+	static PivotFinder getmedianValuePivotDistributed(int numberOfConsideredElements) {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
@@ -112,7 +119,7 @@ public interface PivotFinder {
 
 			@Override
 			public String toString() {
-				return "The median of " + numberOfConsideredElements + " elements distributed throughout the array";
+				return "The medianValue of " + numberOfConsideredElements + " elements distributed throughout the array";
 			}
 		};
 	}
