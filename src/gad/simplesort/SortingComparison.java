@@ -43,12 +43,11 @@ public final class SortingComparison {
         // Own testing
         int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
-        int[] miniArray = new int[] {9, 1, 4};
-        System.out.println(PivotFinder.getMedianPivotFront(2).findPivot(miniArray, 1 ,2));
+        int[] miniArray = new int[] {9, 1, 4, 3, 7};
         System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(array, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 2 ,8));
-        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray, 2 ,4));
         System.out.println("Distributed");
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));

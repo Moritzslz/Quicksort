@@ -68,7 +68,7 @@ public interface PivotFinder {
 				} else if (from == to) {
 					return from;
 				} else if (from == to - 1) {
-					return from;
+					return to;
 				} else if (to - from + 1 < numberOfConsideredElements) {
 					length = to - from + 1;
 				}
@@ -120,7 +120,7 @@ public interface PivotFinder {
 				} else if (from == to) {
 					return from;
 				} else if (from == to - 1) {
-					return from;
+					return to;
 				} else if (to - from + 1 < numberOfConsideredElements) {
 					length = to - from + 1;
 				}
