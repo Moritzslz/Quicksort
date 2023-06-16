@@ -69,6 +69,8 @@ public interface PivotFinder {
 					return from;
 				} else if (from == to - 1) {
 					return to;
+				} else if (numbers.length < numberOfConsideredElements) {
+					return from;
 				} else if (to - from + 1 < numberOfConsideredElements) {
 					length = to - from + 1;
 				}
