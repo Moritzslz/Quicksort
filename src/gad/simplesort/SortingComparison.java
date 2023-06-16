@@ -49,9 +49,9 @@ public final class SortingComparison {
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 2 ,8));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray, 0 ,2));
         System.out.println("Distributed");
-        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array, 0 ,9));
-        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));
-        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 1 ,9));
+        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(miniArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(miniArray, 0 ,1));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(miniArray, 0 ,2));
     }
 
     private static void comparePivotSelectionQuicksort() {
