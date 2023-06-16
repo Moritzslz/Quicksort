@@ -114,7 +114,7 @@ public interface PivotFinder {
 				}
 
 				int k = 0;
-				for(int i = 0; i <= to && k < length; i += distance) {
+				for(int i = 0; from + i <= to && k < length; i += distance) {
 					temp[k] = numbers[from+i];
 					k++;
 				}
