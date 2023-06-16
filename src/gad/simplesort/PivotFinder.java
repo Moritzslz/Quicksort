@@ -68,6 +68,8 @@ public interface PivotFinder {
 					return from;
 				} else if (from == to) {
 					return from;
+				} else if (from == to - 1) {
+					return from;
 				}
 
 				for(int i = 0; from + i <= to && i < length; i ++) {
@@ -112,6 +114,10 @@ public interface PivotFinder {
 				int[] temp = new int[length];
 
 				if (numberOfConsideredElements == 1) {
+					return from;
+				} else if (from == to) {
+					return from;
+				} else if (from == to - 1) {
 					return from;
 				}
 
