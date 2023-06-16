@@ -62,7 +62,6 @@ public interface PivotFinder {
 				int medianIndex = 0;
 
 				int length = numberOfConsideredElements;
-				int[] temp = new int[length];
 
 				if (numberOfConsideredElements == 1) {
 					return from;
@@ -70,7 +69,11 @@ public interface PivotFinder {
 					return from;
 				} else if (from == to - 1) {
 					return from;
+				} else if (to - from + 1 < numberOfConsideredElements) {
+					length = to - from + 1;
 				}
+
+				int[] temp = new int[length];
 
 				for(int i = 0; from + i <= to && i < length; i ++) {
 					temp[i] = numbers[from + i];
@@ -111,7 +114,6 @@ public interface PivotFinder {
 				double distance = Math.ceil(number);
 
 				int length = numberOfConsideredElements;
-				int[] temp = new int[length];
 
 				if (numberOfConsideredElements == 1) {
 					return from;
@@ -119,7 +121,11 @@ public interface PivotFinder {
 					return from;
 				} else if (from == to - 1) {
 					return from;
+				} else if (to - from + 1 < numberOfConsideredElements) {
+					length = to - from + 1;
 				}
+
+				int[] temp = new int[length];
 
 				int k = 0;
 				for(int i = 0; from + i <= to && k < length; i += distance) {
