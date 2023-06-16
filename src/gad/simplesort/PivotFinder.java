@@ -75,15 +75,12 @@ public interface PivotFinder {
 				}
 
 				Arrays.sort(temp);
-				System.out.println(Arrays.toString(temp));
 
 				if (length % 2 == 0) {
 					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
 				} else {
 					medianValue = temp[(length-1)/2];
 				}
-
-				System.out.println("Value: " + medianValue);
 
 				for(int i = from; i <= to; i++) {
 					if(numbers[i] == medianValue) {
@@ -124,7 +121,6 @@ public interface PivotFinder {
 					k++;
 				}
 
-				//System.out.println(Arrays.toString(temp));
 				Arrays.sort(temp);
 
 				if (length % 2 == 0) {

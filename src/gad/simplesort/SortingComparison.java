@@ -38,20 +38,20 @@ public final class SortingComparison {
         // partiallySortArrayBlocks(numbers, SORTED_BLOCK_SIZE);
         // partiallySortArrayRandomValues(numbers, SORTED_RANDOM_ELEMENTS_PERCENT);
         // reverseArray(numbers)
-        // compareAlgorithms(algorithms, numbers, REPETITIONS);
+        compareAlgorithms(algorithms, numbers, REPETITIONS);
 
         // Own testing
-        int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
-        int[] miniArray = new int[] {9, 1, 4};
+        //int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        //int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
+        //int[] miniArray = new int[] {9, 1, 4};
         //System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(miniArray, 0 ,0));
         //System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(array, 0 ,9));
         //System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 0 ,9));
         //System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 2 ,8));
-        System.out.println("Distributed");
-        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array, 0 ,9));
-        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));
-        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 1 ,9));
+        //System.out.println("Distributed");
+        //System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array, 0 ,9));
+        //System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));
+        //System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 1 ,9));
     }
 
     private static void comparePivotSelectionQuicksort() {
