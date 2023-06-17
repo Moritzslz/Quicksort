@@ -95,16 +95,9 @@ public interface PivotFinder {
 				}
 				return medianIndex;
 				 */
-				int range = to - from + 1;
-				int interval = range / (numberOfConsideredElements + 1);
-
-				if (interval <= 0) {
-					return from;
-				}
-
 				int[] considered = new int[numberOfConsideredElements];
 				for (int i = 0; i < numberOfConsideredElements; i++) {
-					considered[i] = numbers[from + (i + 1) * interval];
+					considered[i] = numbers[from + i];
 				}
 				Arrays.sort(considered);
 				int median = considered[considered.length / 2];
@@ -175,20 +168,15 @@ public interface PivotFinder {
 				return medianIndex;
  */
 				int range = to - from + 1;
-				int interval = range / (numberOfConsideredElements + 1);
-
-				if (interval <= 0) {
+				if (range <= numberOfConsideredElements) {
 					return from;
 				}
 
-				int[] consideredIndices = new int[numberOfConsideredElements];
-				for (int i = 0; i < numberOfConsideredElements; i++) {
-					consideredIndices[i] = from + (i + 1) * interval;
-				}
+				int interval = range / (numberOfConsideredElements + 1);
 
 				int[] considered = new int[numberOfConsideredElements];
 				for (int i = 0; i < numberOfConsideredElements; i++) {
-					considered[i] = numbers[consideredIndices[i]];
+					considered[i] = numbers[from + (i + 1) * interval];
 				}
 				Arrays.sort(considered);
 				int median = considered[considered.length / 2];
