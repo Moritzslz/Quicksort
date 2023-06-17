@@ -38,8 +38,9 @@ public final class SortingComparison {
         // partiallySortArrayBlocks(numbers, SORTED_BLOCK_SIZE);
         // partiallySortArrayRandomValues(numbers, SORTED_RANDOM_ELEMENTS_PERCENT);
         // reverseArray(numbers)
-        //compareAlgorithms(algorithms, numbers, REPETITIONS);
+        compareAlgorithms(algorithms, numbers, REPETITIONS);
 
+        /*
         // Own testing
         int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
@@ -64,6 +65,8 @@ public final class SortingComparison {
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(twoValueArray, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(twoValueArray, 0 ,9));
 
+
+         */
 
     }
 

@@ -114,7 +114,7 @@ public interface PivotFinder {
 				temp = new int[length];
 
 				int k = 0;
-				for (int i = from; i < numbers.length; i += (gap + 1)) {
+				for (int i = from; i < numbers.length && k < length; i += (gap + 1)) {
 					temp[k] = numbers[i];
 					k++;
 				}
