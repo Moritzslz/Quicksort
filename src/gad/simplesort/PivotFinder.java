@@ -57,56 +57,33 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-				/*
-				int medianValue = 0;
-				int medianIndex = 0;
+				int index = from;
+				int median;
+				int[] temp;
+				int length;
 
-				int length = numberOfConsideredElements;
+				// Edge cases
+				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				else {length = numberOfConsideredElements;}
+				if (length > numbers.length) {length = numbers.length;}
+				if (from == to || from == to - 1) {return from;}
 
-				if (numberOfConsideredElements == 1) {
-					return from;
-				} else if (from == to) {
-					return from;
-				} else if (from == to - 1) {
-					return to;
-				} else if (to - from + 1 < numberOfConsideredElements) {
-					length = to - from + 1;
-				}
+				temp = new int[length];
 
-				int[] temp = new int[length];
-
-				for(int i = 0; from + i <= to && i < length && i < numbers.length; i ++) {
+				for (int i = 0; i < length; i++) {
 					temp[i] = numbers[from + i];
 				}
 
-				Arrays.sort(temp);
+				median = PivotFinder.getMedian(temp);
 
-				if (length % 2 == 0) {
-					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
-				} else {
-					medianValue = temp[(length-1)/2];
-				}
-
-				for(int i = from; i <= to && i < numbers.length; i++) {
-					if(numbers[i] == medianValue) {
-						medianIndex = i;
+				for (int i = 0; i < length; i++) {
+					index = from + i;
+					if (numbers[from + i] == median) {
 						break;
 					}
 				}
-				return medianIndex;
-				 */
-				int[] considered = new int[numberOfConsideredElements];
-				for (int i = 0; i < numberOfConsideredElements; i++) {
-					considered[i] = numbers[from + i];
-				}
-				Arrays.sort(considered);
-				int median = considered[considered.length / 2];
-				for (int i = from; i <= to; i++) {
-					if (numbers[i] == median) {
-						return i;
-					}
-				}
-				return -1; // Pivot not found
+
+				return index;
 			}
 
 			@Override
@@ -120,72 +97,42 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-/*
-				int medianValue = 0;
-				int medianIndex = 0;
-				double number = (double) (to - from + 1) / numberOfConsideredElements;
-				double distance = Math.ceil(number);
+				int index = from;
+				int median;
+				int[] temp;
+				int length;
+				int gap = (int) Math.ceil((double) (to - from + 1) / numberOfConsideredElements) - 1;
 
-				int length = numberOfConsideredElements;
+				//System.out.println("Gap: " + gap);
 
-				if (numberOfConsideredElements == 1) {
-					return from;
-				} else if (from == to) {
-					return from;
-				} else if (from == to - 1) {
-					return to;
-				} else if (to - from + 1 < numberOfConsideredElements) {
-					length = to - from + 1;
-				}
+				// Edge cases
+				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				else {length = numberOfConsideredElements;}
+				if (length > numbers.length) {length = numbers.length;}
+				if (from == to || from == to - 1) {return from;}
 
-				if (numberOfConsideredElements >= numbers.length) {
-					distance = 1;
-				}
-
-				int[] temp = new int[length];
+				temp = new int[length];
 
 				int k = 0;
-				for(int i = 0; from + i <= to && k < length && i + from < numbers.length; i += distance) {
-					temp[k] = numbers[from+i];
+				for (int i = from; i < numbers.length; i += (gap + 1)) {
+					temp[k] = numbers[i];
 					k++;
 				}
 
-				Arrays.sort(temp);
+				//System.out.println("Temp: " + Arrays.toString(temp));
 
-				if (length % 2 == 0) {
-					medianValue = (temp[length/2-1] + temp[length/2]) / 2;
-				} else {
-					medianValue = temp[(length-1)/2];
-				}
+				median = PivotFinder.getMedian(temp);
 
-				for(int i = from; i <= to && i < numbers.length; i += distance) {
-					if(numbers[i] == medianValue) {
-						medianIndex = i;
+				for (int i = 0; i < numbers.length; i += (gap + 1)) {
+					index = from + i;
+					if (numbers[from + i] == median) {
 						break;
 					}
 				}
 
-				return medianIndex;
- */
-				int range = to - from + 1;
-				if (range <= numberOfConsideredElements) {
-					return from;
-				}
+				return index;
 
-				int interval = range / (numberOfConsideredElements + 1);
 
-				int[] considered = new int[numberOfConsideredElements];
-				for (int i = 0; i < numberOfConsideredElements; i++) {
-					considered[i] = numbers[from + (i + 1) * interval];
-				}
-				Arrays.sort(considered);
-				int median = considered[considered.length / 2];
-				for (int i = from; i <= to; i++) {
-					if (numbers[i] == median) {
-						return i;
-					}
-				}
-				return -1; // Pivot not found
 			}
 
 			@Override
@@ -193,5 +140,22 @@ public interface PivotFinder {
 				return "The medianValue of " + numberOfConsideredElements + " elements distributed throughout the array";
 			}
 		};
+	}
+
+	private static int getMedian(int[] array) {
+		int median;
+		Arrays.sort(array);
+
+		if (array.length % 2 == 0) {
+			// Length is even
+			// Smaller middle value for [1, 2, 3, 4] it would be 2 at index 1
+			median = array[array.length / 2 - 1];
+		} else {
+			// Length is odd
+			// Middle value for [1, 2, 3, 4, 5] it would be 3 at index 2
+			median = array[array.length / 2];
+		}
+
+		return median;
 	}
 }
