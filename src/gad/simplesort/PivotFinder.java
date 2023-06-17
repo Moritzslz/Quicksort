@@ -73,7 +73,7 @@ public interface PivotFinder {
 					length = to - from + 1;
 				}
 
-				if (numberOfConsideredElements >= numbers.length) {
+				if (numberOfConsideredElements > numbers.length) {
 					return from;
 				}
 
