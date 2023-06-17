@@ -111,8 +111,9 @@ public interface PivotFinder {
 				//System.out.println("Gap: " + gap);
 
 				// Edge cases
-				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
-				else {length = numberOfConsideredElements;}
+				//if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				//else {length = numberOfConsideredElements;}
+				length = numberOfConsideredElements;
 				if (length > numbers.length) {length = numbers.length;}
 				if (from == to || from == to - 1) {return from;}
 
