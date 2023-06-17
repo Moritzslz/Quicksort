@@ -83,7 +83,11 @@ public interface PivotFinder {
 					}
 				}
 
-				return index;
+				if (index >= from && index <= to) {
+					return index;
+				} else {
+					return from;
+				}
 			}
 
 			@Override
@@ -130,9 +134,11 @@ public interface PivotFinder {
 					}
 				}
 
-				return index;
-
-
+				if (index >= from && index <= to) {
+					return index;
+				} else {
+					return from;
+				}
 			}
 
 			@Override
