@@ -57,7 +57,7 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-
+				/*
 				int medianValue = 0;
 				int medianIndex = 0;
 
@@ -94,6 +94,26 @@ public interface PivotFinder {
 					}
 				}
 				return medianIndex;
+				 */
+				int range = to - from + 1;
+				int interval = range / (numberOfConsideredElements + 1);
+
+				if (interval <= 0) {
+					return from;
+				}
+
+				int[] considered = new int[numberOfConsideredElements];
+				for (int i = 0; i < numberOfConsideredElements; i++) {
+					considered[i] = numbers[from + (i + 1) * interval];
+				}
+				Arrays.sort(considered);
+				int median = considered[considered.length / 2];
+				for (int i = from; i <= to; i++) {
+					if (numbers[i] == median) {
+						return i;
+					}
+				}
+				return -1; // Pivot not found
 			}
 
 			@Override
@@ -107,7 +127,7 @@ public interface PivotFinder {
 		return new PivotFinder() {
 			@Override
 			public int findPivot(int[] numbers, int from, int to) {
-
+/*
 				int medianValue = 0;
 				int medianIndex = 0;
 				double number = (double) (to - from + 1) / numberOfConsideredElements;
@@ -153,6 +173,31 @@ public interface PivotFinder {
 				}
 
 				return medianIndex;
+ */
+				int range = to - from + 1;
+				int interval = range / (numberOfConsideredElements + 1);
+
+				if (interval <= 0) {
+					return from;
+				}
+
+				int[] consideredIndices = new int[numberOfConsideredElements];
+				for (int i = 0; i < numberOfConsideredElements; i++) {
+					consideredIndices[i] = from + (i + 1) * interval;
+				}
+
+				int[] considered = new int[numberOfConsideredElements];
+				for (int i = 0; i < numberOfConsideredElements; i++) {
+					considered[i] = numbers[consideredIndices[i]];
+				}
+				Arrays.sort(considered);
+				int median = considered[considered.length / 2];
+				for (int i = from; i <= to; i++) {
+					if (numbers[i] == median) {
+						return i;
+					}
+				}
+				return -1; // Pivot not found
 			}
 
 			@Override
