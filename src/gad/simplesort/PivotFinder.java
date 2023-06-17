@@ -73,13 +73,9 @@ public interface PivotFinder {
 					length = to - from + 1;
 				}
 
-				if (numberOfConsideredElements > numbers.length) {
-					return from;
-				}
-
 				int[] temp = new int[length];
 
-				for(int i = 0; from + i <= to && i < length; i ++) {
+				for(int i = 0; from + i <= to && i < length && i < numbers.length; i ++) {
 					temp[i] = numbers[from + i];
 				}
 
@@ -91,7 +87,7 @@ public interface PivotFinder {
 					medianValue = temp[(length-1)/2];
 				}
 
-				for(int i = from; i <= to; i++) {
+				for(int i = from; i <= to && i < numbers.length; i++) {
 					if(numbers[i] == medianValue) {
 						medianIndex = i;
 						break;
@@ -136,7 +132,7 @@ public interface PivotFinder {
 				int[] temp = new int[length];
 
 				int k = 0;
-				for(int i = 0; from + i <= to && k < length; i += distance) {
+				for(int i = 0; from + i <= to && k < length && i + from < numbers.length; i += distance) {
 					temp[k] = numbers[from+i];
 					k++;
 				}
@@ -149,7 +145,7 @@ public interface PivotFinder {
 					medianValue = temp[(length-1)/2];
 				}
 
-				for(int i = from; i <= to; i += distance) {
+				for(int i = from; i <= to && i < numbers.length; i += distance) {
 					if(numbers[i] == medianValue) {
 						medianIndex = i;
 						break;
