@@ -43,15 +43,33 @@ public final class SortingComparison {
         // Own testing
         int[] array = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
+        int[] array3 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7, 11, 23, 99, 1024, -3, -5};
+        int[] negativeArray = new int[] {-1, -2, -3, -4, -5, -6, -7};
         int[] miniArray = new int[] {9, 1, 4};
+        int[] miniArray2= new int[] {-10, -11, -12, -13, 5};
+        int[] miniArray3 = new int[] {99, 1024, 3, 98, 9};
+        int[] miniArray4 = new int[] {-5, 1024, 1025, 1026, -1024};
+        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray2, 0 ,4));
+        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray3, 0 ,4));
+        System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray4, 0 ,4));
+        /*
         System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(array, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 2 ,8));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(miniArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(negativeArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotFront(7).findPivot(negativeArray, 0 ,6));
         System.out.println("Distributed");
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(miniArray, 0 ,2));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(miniArray, 0 ,1));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(miniArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(negativeArray, 0 ,2));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(negativeArray, 0 ,4));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array3, 0 ,4));
+        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array3, 0 ,6));
+
+         */
     }
 
     private static void comparePivotSelectionQuicksort() {

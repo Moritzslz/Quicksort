@@ -73,6 +73,10 @@ public interface PivotFinder {
 					length = to - from + 1;
 				}
 
+				if (numberOfConsideredElements >= numbers.length) {
+					return from;
+				}
+
 				int[] temp = new int[length];
 
 				for(int i = 0; from + i <= to && i < length; i ++) {
