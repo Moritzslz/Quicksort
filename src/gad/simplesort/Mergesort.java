@@ -20,13 +20,13 @@ public class Mergesort extends SortAlgorithm {
 	public void sort(int[] numbers, Result result, int from, int to) {
 		result.startMergesort(numbers, from, to);
 
-		if (isSorted(numbers, from, to)) {
-			return;
-		}
-
 		// SelectionSort Optimierung
 		if (to - from + 1 <= selectionSortSize) {
 			selectionSort.sort(numbers, result, from, to);
+			return;
+		}
+
+		if (isSorted(numbers, from, to)) {
 			return;
 		}
 
