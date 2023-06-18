@@ -18,7 +18,7 @@ public class Mergesort extends SortAlgorithm {
 
 	@Override
 	public void sort(int[] numbers, Result result, int from, int to) {
-		if (from >= to) {
+		if (isSorted(numbers, from, to)) {
 			return;
 		}
 
