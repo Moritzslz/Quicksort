@@ -38,6 +38,15 @@ public class Mergesort extends SortAlgorithm {
 		if (from >= to) {
 			return;
 		}
+
+		int[] sorted = Arrays.copyOfRange(numbers, from, to+1);
+		int[] subArray = Arrays.copyOfRange(numbers, from, to+1);
+		Arrays.sort(sorted);
+
+		if (Arrays.equals(sorted, subArray)) {
+			return;
+		}
+
 		int mid = (from + to) / 2;
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
