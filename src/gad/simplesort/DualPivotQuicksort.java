@@ -30,6 +30,7 @@ public class DualPivotQuicksort extends SortAlgorithm {
 		}
 
 		int pivots[] = pivotFinder.findPivot(numbers, from, to);
+
 		if (pivots[1] == from) {
 			pivots[1] = pivots[0];
 		}

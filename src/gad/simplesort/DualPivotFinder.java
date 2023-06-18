@@ -90,7 +90,12 @@ public interface DualPivotFinder {
 				}
 				if (rs2 == -1) rs2 = rs1;
 
-				return new int[] {Math.min(rs1, rs2), Math.max(rs1, rs2)};
+				piv1 = Math.min(rs1, rs2);
+				piv2 = Math.max(rs1, rs2);
+				if (piv2 == from) {
+					piv2 = piv1;
+				}
+				return new int[] {piv1, piv2};
 			}
 
 			@Override
@@ -153,7 +158,13 @@ public interface DualPivotFinder {
 				if (rs2 == -1) {
 					rs2 = rs1;
 				}
-				return new int[] {Math.min(rs1, rs2), Math.max(rs1, rs2)};
+
+				piv1 = Math.min(rs1, rs2);
+				piv2 = Math.max(rs1, rs2);
+				if (piv2 == from) {
+					piv2 = piv1;
+				}
+				return new int[] {piv1, piv2};
 			}
 
 			@Override
