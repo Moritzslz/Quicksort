@@ -30,12 +30,12 @@ public class DualPivotQuicksort extends SortAlgorithm {
 		}
 
 		int pivots[] = pivotFinder.findPivot(numbers, from, to);
-		int leftPivot = pivots[0];
-		int rightPivot = pivots[1];
-
 		if (pivots[1] == from) {
 			pivots[1] = pivots[0];
 		}
+
+		int leftPivot = pivots[0];
+		int rightPivot = pivots[1];
 
 		// Switching the Pivot elements to the first/last index
 		swap(numbers, leftPivot, from);
