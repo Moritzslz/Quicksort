@@ -51,27 +51,46 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				int[] pivots = new int[2];
-				int length;
-
-				// Edge cases
-				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
-				else {length = numberOfConsideredElements;}
-				if (length > numbers.length) {length = numbers.length;}
-
-				int gapSize = (to - from) / (numberOfConsideredElements - 1) - 1;
-
-				pivots[0] = from + gapSize;
-				pivots[1] = from + 2 * gapSize;
+				// TODO
+				int lowerBound = Math.min(numberOfConsideredElements, to - from + 1);
+				int[] bufArray;
 
 
-				if (numbers[pivots[0]] > numbers[pivots[1]]) {
-					int temp = pivots[0];
-					pivots[0] = pivots[1];
-					pivots[1] = temp;
+				bufArray = Arrays.copyOfRange(numbers, from, from + lowerBound);
+				Arrays.sort(bufArray);
+
+
+				int stepLength = (bufArray.length - (bufArray.length - 2) % 3) / 3;
+
+				int piv1 = bufArray[stepLength];
+				int piv2 = -1;
+
+				if (bufArray.length == 1) {
+					piv2 = bufArray[0];
+				} else {
+					if ((bufArray.length-2) % 3 == 2) {
+						piv2 = bufArray[2 * stepLength + 2];
+					} else piv2 = bufArray[2 * stepLength + 1];
 				}
 
-				return pivots;
+
+				int rs1 = 0;
+				int rs2 = 0;
+				for (int i = from; i < numbers.length; i++) {
+					if (numbers[i] == piv1) {
+						rs1 = i;
+						break;
+					}
+				}
+				for (int i = from; i < numbers.length; i++) {
+					if (numbers[i] == piv2 && rs1 != i) {
+						rs2 = i;
+						break;
+					}
+				}
+				if (rs2 == -1) rs2 = rs1;
+
+				return new int[] {Math.min(rs1, rs2), Math.max(rs1, rs2)};
 			}
 
 			@Override
@@ -85,27 +104,56 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				int[] pivots = new int[2];
-				int length;
+				// TODO
+				int lowerBound = Math.min(numberOfConsideredElements, to - from + 1);
+				int range = to - from;
+				int steplength = range / (numberOfConsideredElements-1);
+				int steps = 0;
+				if (numbers.length == numberOfConsideredElements) steplength = 1;
+				int[] bufArray = new int[lowerBound];
 
-				// Edge cases
-				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
-				else {length = numberOfConsideredElements;}
-				if (length > numbers.length) {length = numbers.length;}
+				for (int runner = from; steps < bufArray.length && runner < numbers.length; runner += steplength) {
+					bufArray[steps] = numbers[runner];
+					steps+=1;
+				}
+				Arrays.sort(bufArray);
+				int stepLength = (bufArray.length - (bufArray.length-2) % 3 - 2) / 3;
 
-				int gapSize = (to - from) / (numberOfConsideredElements - 1) - 1;
+				int piv1 = bufArray[stepLength];
+				int piv2;
 
-				pivots[0] = from + gapSize;
-				pivots[1] = from + 2 * gapSize;
+				if (bufArray.length == 1) {
+					piv2 = bufArray[0];
+				} else {
+					if ((bufArray.length-2) % 3 == 2) {
+						piv2 = bufArray[2 * stepLength + 2];
 
+					} else {
+						piv2 = bufArray[2 * stepLength + 1];
 
-				if (numbers[pivots[0]] > numbers[pivots[1]]) {
-					int temp = pivots[0];
-					pivots[0] = pivots[1];
-					pivots[1] = temp;
+					}
 				}
 
-				return pivots;
+
+				int rs1 = -1;
+				int rs2 = -1;
+				for (int i = from; i < numbers.length; i++) {
+					if (numbers[i] == piv1) {
+						rs1 = i;
+						break;
+					}
+				}
+				for (int i = from; i < numbers.length; i++) {
+					if (numbers[i] == piv2 && rs1 != i) {
+						rs2 = i;
+						break;
+					}
+				}
+
+				if (rs2 == -1) {
+					rs2 = rs1;
+				}
+				return new int[] {Math.min(rs1, rs2), Math.max(rs1, rs2)};
 			}
 
 			@Override
