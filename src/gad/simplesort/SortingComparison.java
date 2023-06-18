@@ -21,9 +21,8 @@ public final class SortingComparison {
     }
 
     public static void main(String[] args) {
-
-        int[] numbers = new int[] {9, 1, 8, 5, 2, 3, 4, 6, 0, 7};
         /*
+        int[] numbers = new int[] {9, 1, 8, 5, 2, 3, 4, 6, 0, 7};
         int length = 10;
         int leftPivot = 3;
         int rightPivot = 5;
@@ -60,15 +59,10 @@ public final class SortingComparison {
 
         System.out.println("New Array " + Arrays.toString(numbers));
 
-         */
-
         StudentResult result = new StudentResult();
         DualPivotQuicksort dualPivotQuicksort = new DualPivotQuicksort(DualPivotFinder.getFirstLastPivot(), 0);
         dualPivotQuicksort.sort(numbers , result, 0, 9);
-
-
-
-
+         */
 
         // comparePivotSelectionQuicksort();
         // compareMergesortHelperArray();

@@ -1,5 +1,7 @@
 package gad.simplesort;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public interface DualPivotFinder {
@@ -50,26 +52,18 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				int[] pivots = new int[2];
-				pivots[0] = from;
-				pivots[1] = to;
-				int length;
-
-				// Edge cases
-				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
-				else {length = numberOfConsideredElements;}
-				if (length > numbers.length) {length = numbers.length;}
-				if (from == to || from == to - 1) {return pivots;}
-
-				int gap = length / numberOfConsideredElements;
-				if (from == 0) {
-					pivots[0] = gap;
-					pivots[1] = 2 * gap;
-				} else {
-					pivots[0] = from + gap - 1;
-					pivots[1] = from + 2 * gap - 1;
+				int[] indices = new int[numberOfConsideredElements];
+				for (int i = 0; i < numberOfConsideredElements; i++) {
+					indices[i] = from + i;
 				}
-				return pivots;
+
+				// Sort the indices based on the corresponding values in numbers
+				Arrays.sort(indices);
+
+				int pivot1 = indices[(numberOfConsideredElements - 1) / 3];
+				int pivot2 = indices[(2 * (numberOfConsideredElements - 1)) / 3];
+
+				return new int[]{pivot1, pivot2};
 			}
 
 			@Override
@@ -83,8 +77,18 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				// TODO
-				return null;
+				int[] indices = new int[numberOfConsideredElements];
+				for (int i = 0; i < numberOfConsideredElements; i++) {
+					indices[i] = from + i;
+				}
+
+				// Sort the indices based on the corresponding values in numbers
+				Arrays.sort(indices);
+
+				int pivot1 = indices[(numberOfConsideredElements - 1) / 3];
+				int pivot2 = indices[(2 * (numberOfConsideredElements - 1)) / 3];
+
+				return new int[]{pivot1, pivot2};
 			}
 
 			@Override
