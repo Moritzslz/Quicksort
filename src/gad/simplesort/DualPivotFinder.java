@@ -52,8 +52,8 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
+				/*
 				int[] pivots = new int[2];
-				int[] temp = new int[numberOfConsideredElements];
 				int length;
 
 				int gapSize = (to - from) / (numberOfConsideredElements - 1);
@@ -68,6 +68,41 @@ public interface DualPivotFinder {
 				}
 
 				return pivots;
+				 */
+				int[] indices = new int[2];
+				int x = numberOfConsideredElements;
+
+				if (x < 3 || from >= to) {
+					indices[0] = from;
+					indices[1] = to;
+					return indices;
+				}
+
+				int[] sortedIndices = new int[x];
+				for (int i = 0; i < x; i++) {
+					sortedIndices[i] = from + i;
+				}
+
+				// Insertion Sort, um die Indizes basierend auf den Elementwerten zu sortieren
+				for (int i = 1; i < x; i++) {
+					int index = sortedIndices[i];
+					int j = i - 1;
+
+					while (j >= 0 && numbers[sortedIndices[j]] > numbers[index]) {
+						sortedIndices[j + 1] = sortedIndices[j];
+						j--;
+					}
+
+					sortedIndices[j + 1] = index;
+				}
+
+				int smallerPivotIndex = from + x / 3 - 1;
+				int largerPivotIndex = from + 2 * x / 3 - 1;
+
+				indices[0] = smallerPivotIndex;
+				indices[1] = largerPivotIndex;
+
+				return indices;
 			}
 
 			@Override
