@@ -15,19 +15,22 @@ public class Mergesort extends SortAlgorithm {
 		if (from >= to) {
 			return;
 		}
+
 		result.startMergesort(numbers, from, to);
 
 		int mid = (from + to) / 2;
-		sort(numbers, result, from, mid);
-		sort(numbers, result, mid + 1, to);
-		result.logPartialArray(numbers, from, to);
+		int[] helperLeft = new int[mid];
+		int[] helperRight = new int[mid];
+		sort(numbers, result, from, mid, helperLeft);
+		sort(numbers, result, mid + 1, to, helperRight);
 	}
 
 	public void sort(int[] numbers, Result result, int from, int to, int[] helper) {
 		int mid = (from + to) / 2;
 		int indexL = from;
 		int indexR = mid + 1;
-		int length = from - to + 1;
+		int length = to - from + 1;
+
 
 		for (int i = 0; i < length; i++) {
 			if (indexL > mid) { // linker Teil leer
@@ -49,6 +52,8 @@ public class Mergesort extends SortAlgorithm {
 		for (int i = 0; i < length; i++) {
 			numbers[from + i] = helper[i];
 		}
+
+		result.logPartialArray(numbers, from, to);
 	}
 
 	@Override
