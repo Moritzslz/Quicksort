@@ -39,6 +39,7 @@ public class Mergesort extends SortAlgorithm {
 		// SelectionSort Optimierung
 		if (numbers.length <= selectionSortSize) {
 			selectionSort.sort(numbers, result, from, to);
+			return;
 		}
 
 		int mid = (from + to) / 2;
