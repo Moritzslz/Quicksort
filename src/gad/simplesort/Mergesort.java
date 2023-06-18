@@ -39,11 +39,8 @@ public class Mergesort extends SortAlgorithm {
 			return;
 		}
 
-		int[] sorted = Arrays.copyOfRange(numbers, from, to+1);
-		int[] subArray = Arrays.copyOfRange(numbers, from, to+1);
-		Arrays.sort(sorted);
-
-		if (Arrays.equals(sorted, subArray)) {
+		// Check is subarray is already in order
+		if (isSorted(numbers, from, to)) {
 			return;
 		}
 
@@ -79,6 +76,17 @@ public class Mergesort extends SortAlgorithm {
 		for (int i = 0; i < length; i++) {
 			numbers[left + i] = helper[i];
 		}
+	}
+
+	private boolean isSorted (int[] numbers, int from, int to) {
+		boolean isSorted = true;
+		for (int i = from + 1; i <= to; i++) {
+			if (numbers[i-1] >= numbers[i]) {
+				isSorted = false;
+				break;
+			}
+		}
+		return isSorted;
 	}
 
 	@Override
