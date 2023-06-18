@@ -21,6 +21,13 @@ public final class SortingComparison {
     }
 
     public static void main(String[] args) {
+        int[] numbers = new int[] {9, 1, 8, 5, 2, 3, 4, 6, 0, 7};
+        DualPivotFinder pivotFinder = DualPivotFinder.getMedianPivotFront(3);
+        int[] pivots = pivotFinder.findPivot(numbers, 0, numbers.length-1);
+        System.out.println(Arrays.toString(pivots));
+
+
+
         /*
         int[] numbers = new int[] {9, 1, 8, 5, 2, 3, 4, 6, 0, 7};
         int length = 10;
