@@ -17,6 +17,11 @@ public class MergesortSimple extends SortAlgorithm {
 		}
 		result.startMergesort(numbers, from, to);
 
+		// SelectionSort Optimierung
+		if (numbers.length <= selectionSortSize) {
+			selectionSort.sort(numbers, result, from, to);
+		}
+
 		int mid = (from + to) / 2;
 		sort(numbers, result, from, mid);
 		sort(numbers, result, mid + 1, to);

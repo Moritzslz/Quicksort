@@ -19,6 +19,11 @@ public class Quicksort extends SortAlgorithm {
 		}
 		result.startQuicksort(numbers, from, to);
 
+		// SelectionSort Optimierung
+		if (numbers.length <= selectionSortSize) {
+			selectionSort.sort(numbers, result, from, to);
+		}
+
 		int selectedPivot = pivotFinder.findPivot(numbers, from, to);
 		// Switching the Pivot to the last index
 		swap(numbers, selectedPivot, to);
