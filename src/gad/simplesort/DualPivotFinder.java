@@ -72,6 +72,7 @@ public interface DualPivotFinder {
 				}
 
 				return pivots;
+
 			}
 
 			@Override
