@@ -74,11 +74,11 @@ public final class SortingComparison {
         // comparePivotSelectionQuicksort();
         // compareMergesortHelperArray();
         // compareDualPivotQuicksort();
-        comparePivotSelectionDualPivotQuicksort();
+        // comparePivotSelectionDualPivotQuicksort();
         // compareSelectionSortSizeQuicksort();
         // compareSelectionSortSizeMergesort();
         // compareSelectionsortSizeDualPivotQuicksort();
-        // compareBestAlgorithms();
+         compareBestAlgorithms();
         // comparePivotSelectionQuicksort();
     }
 
