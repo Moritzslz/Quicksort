@@ -63,6 +63,10 @@ public interface PivotFinder {
 				int[] temp;
 				int length;
 
+				int gapSize = (to - from) / (numberOfConsideredElements - 1) -1;
+
+				//System.out.println("Gap: " + gapSize);
+
 				// Edge cases
 				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
 				else {length = numberOfConsideredElements;}
@@ -71,13 +75,17 @@ public interface PivotFinder {
 
 				temp = new int[length];
 
-				for (int i = 0; i < length; i++) {
-					temp[i] = numbers[from + i];
+				int k = 0;
+				for (int i = from; i < numbers.length && k < length; i += gapSize) {
+					temp[k] = numbers[i];
+					k++;
 				}
+
+				//System.out.println("Temp: " + Arrays.toString(temp));
 
 				median = MedianFinder.getMedian(temp);
 
-				for (int i = 0; i < length; i++) {
+				for (int i = 0; from + i < numbers.length; i += gapSize) {
 					index = from + i;
 					if (numbers[from + i] == median) {
 						break;
@@ -107,7 +115,7 @@ public interface PivotFinder {
 				int[] temp;
 				int length;
 
-				int gapSize = (to - from) / (numberOfConsideredElements - 1);
+				int gapSize = (to - from) / (numberOfConsideredElements - 1) -1;
 
 				//System.out.println("Gap: " + gapSize);
 
