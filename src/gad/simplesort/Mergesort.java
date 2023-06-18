@@ -27,6 +27,7 @@ public class Mergesort extends SortAlgorithm {
 
 		// SelectionSort Optimierung
 		if (to - from + 1 <= selectionSortSize) {
+			result.logPartialArray(numbers, from, to);
 			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
