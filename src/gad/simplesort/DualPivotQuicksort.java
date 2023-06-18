@@ -19,7 +19,7 @@ public class DualPivotQuicksort extends SortAlgorithm {
 			return;
 		}
 
-		result.startQuicksort(numbers, from, to);
+		result.startDualPivotQuicksort(numbers, from, to);
 
 		int length = to - from + 1;
 
