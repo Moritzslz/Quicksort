@@ -41,9 +41,9 @@ public class Mergesort extends SortAlgorithm {
 		}
 
 		// Check is subarray is already in order
-		//if (isSorted(numbers, from, to)) {
-		//	return;
-		//}
+		if (isSorted(numbers, from, to)) {
+			return;
+		}
 
 		int mid = (from + to) / 2;
 		sort(numbers, result, from, mid, helper);
@@ -85,14 +85,12 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public boolean isSorted (int[] numbers, int from, int to) {
-		boolean isSorted = true;
 		for (int i = from + 1; i <= to; i++) {
-			if (numbers[i-1] >= numbers[i]) {
-				isSorted = false;
-				break;
+			if (numbers[i-1] > numbers[i]) {
+				return false;
 			}
 		}
-		return isSorted;
+		return true;
 	}
 
 	@Override
