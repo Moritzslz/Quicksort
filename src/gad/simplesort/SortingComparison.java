@@ -46,6 +46,17 @@ public final class SortingComparison {
         int[] array2 = new int[] {9, 1, 8, 5, 2, 3, 5, 1, 0, 7};
         int[] array3 = new int[] {5, 3, 6, 7, 9};
         int[] array4 = new int[] {6, 7, 8};
+        int[] array5 = new int[] {5, 5, 5, 5, 5, 5, 5, 5};
+        int[] array6 = new int[]{1, 5, 5, 5, 5, 5, 5, 7, 8};
+        int[] array7 = new int[]{1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 9};
+
+        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array, 0 ,9));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array, 1 ,9));
+        System.out.println(PivotFinder.getMedianPivotDistributed(2).findPivot(array6, 0 ,array6.length-1));
+        System.out.println(PivotFinder.getMedianPivotDistributed(4).findPivot(array7, 0 ,array7.length-1));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array7, 0 ,array7.length-1));
+        /*
         System.out.println(PivotFinder.getMedianPivotFront(3).findPivot(array, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotFront(5).findPivot(array2, 2 ,8));
@@ -53,6 +64,8 @@ public final class SortingComparison {
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 0 ,9));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array2, 1 ,9));
         System.out.println("#");
+        System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array5, 3 ,5));
+        System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array5, 0 ,5));
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array3, 0 ,4));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array3, 0 ,4));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array3, 2 ,4));
@@ -60,6 +73,8 @@ public final class SortingComparison {
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array4, 0 ,2));
         System.out.println(PivotFinder.getMedianPivotDistributed(3).findPivot(array4, 0 ,1));
         System.out.println(PivotFinder.getMedianPivotDistributed(5).findPivot(array4, 0 ,2));
+
+         */
 
 
 

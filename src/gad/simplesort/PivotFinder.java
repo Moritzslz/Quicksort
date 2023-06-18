@@ -106,30 +106,34 @@ public interface PivotFinder {
 				int median;
 				int[] temp;
 				int length;
-				int gap = (int) Math.ceil((double) (to - from + 1) / numberOfConsideredElements) - 1;
 
-				//System.out.println("Gap: " + gap);
+				// Gap caluclation
+				//int numberOfSkippedElements = (to - from + 1) - numberOfConsideredElements;
+				//int numberOfGaps = (to - from + 1) / numberOfSkippedElements;
+				//int gapSize = numberOfSkippedElements / numberOfGaps;
+				//int gap = (int) Math.ceil((double) (to - from + 1) / numberOfConsideredElements) - 1;
+				int gapSize = (to - from) / (numberOfConsideredElements - 1);
+				System.out.println("Gap: " + gapSize);
 
 				// Edge cases
-				//if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
-				//else {length = numberOfConsideredElements;}
-				length = numberOfConsideredElements;
+				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				else {length = numberOfConsideredElements;}
 				if (length > numbers.length) {length = numbers.length;}
 				if (from == to || from == to - 1) {return from;}
 
 				temp = new int[length];
 
 				int k = 0;
-				for (int i = from; i < numbers.length && k < length; i += (gap + 1)) {
+				for (int i = from; i < numbers.length && k < length; i += gapSize) {
 					temp[k] = numbers[i];
 					k++;
 				}
 
-				//System.out.println("Temp: " + Arrays.toString(temp));
+				System.out.println("Temp: " + Arrays.toString(temp));
 
 				median = MedianFinder.getMedian(temp);
 
-				for (int i = 0; from + i < numbers.length; i += (gap + 1)) {
+				for (int i = 0; from + i < numbers.length; i += gapSize) {
 					index = from + i;
 					if (numbers[from + i] == median) {
 						break;
