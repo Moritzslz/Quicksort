@@ -35,12 +35,6 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public void sort(int[] numbers, Result result, int from, int to, int[] helper) {
-		// SelectionSort Optimierung
-		if (to - from <= selectionSortSize) {
-			selectionSort.sort(numbers, result, from, to);
-			return;
-		}
-
 		if (from >= to) {
 			return;
 		}
