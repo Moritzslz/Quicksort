@@ -83,7 +83,9 @@ public interface DualPivotFinder {
 					sortedIndices[i] = from + i;
 				}
 
+				Arrays.sort(sortedIndices);
 				// Insertion Sort, um die Indizes basierend auf den Elementwerten zu sortieren
+				/*
 				for (int i = 1; i < x; i++) {
 					int index = sortedIndices[i];
 					int j = i - 1;
@@ -95,6 +97,8 @@ public interface DualPivotFinder {
 
 					sortedIndices[j + 1] = index;
 				}
+
+				 */
 
 				int smallerPivotIndex = from + x / 3 - 1;
 				int largerPivotIndex = from + 2 * x / 3 - 1;
@@ -130,6 +134,8 @@ public interface DualPivotFinder {
 					sortedIndices[i] = (int) (Math.random() * (to - from + 1) + from);  // Zufällige Auswahl von Indizes
 				}
 
+				Arrays.sort(sortedIndices);
+				/*
 				// Insertion Sort, um die Indizes basierend auf den Elementwerten zu sortieren
 				for (int i = 1; i < x; i++) {
 					int index = sortedIndices[i];
@@ -142,6 +148,7 @@ public interface DualPivotFinder {
 
 					sortedIndices[j + 1] = index;
 				}
+				 */
 
 				int smallerPivotIndex = sortedIndices[x / 3 - 1];
 				int largerPivotIndex = sortedIndices[2 * x / 3 - 1];
