@@ -115,7 +115,7 @@ public interface PivotFinder {
 				int[] temp;
 				int length;
 
-				int gapSize = (to - from) / (numberOfConsideredElements - 1) -1;
+				int gapSize = (to - from) / (numberOfConsideredElements - 1);
 
 				//System.out.println("Gap: " + gapSize);
 

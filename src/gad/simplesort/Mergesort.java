@@ -1,7 +1,5 @@
 package gad.simplesort;
 
-import java.util.Arrays;
-
 public class Mergesort extends SortAlgorithm {
 	private int selectionSortSize;
 	private Selectionsort selectionSort;
