@@ -30,7 +30,7 @@ public class Mergesort extends SortAlgorithm {
 		int[] subArray = Arrays.copyOfRange(numbers, from, to+1);
 
 		Arrays.sort(sorted);
-		if (sorted.equals(subArray)) {
+		if (Arrays.equals(sorted, subArray)) {
 			return;
 		}
 
@@ -47,31 +47,7 @@ public class Mergesort extends SortAlgorithm {
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
 
-		// Merging
-		int indexL = from;
-		int indexR = mid + 1;
-		int length = to - from + 1;
-
-		for (int i = 0; i < length; i++) {
-			if (indexL > mid) { // linker Teil leer
-				helper[i] = numbers[indexR];
-				indexR++;
-			} else if (indexR > to) { // rechter Teil leer
-				helper[i] = numbers[indexL];
-				indexL++;
-			} else if (numbers[indexL] <= numbers[indexR]) {
-				helper[i] = numbers[indexL];
-				indexL++;
-			} else {
-				helper[i] = numbers[indexR];
-				indexR++;
-			}
-		}
-
-		// Zurückkopieren
-		for (int i = 0; i < length; i++) {
-			numbers[from + i] = helper[i];
-		}
+		mergesortSimple.merge(numbers, from, mid, to);
 
 		result.logPartialArray(numbers, from, to);
 	}
