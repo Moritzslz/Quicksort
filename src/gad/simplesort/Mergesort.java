@@ -18,12 +18,19 @@ public class Mergesort extends SortAlgorithm {
 
 	@Override
 	public void sort(int[] numbers, Result result, int from, int to) {
+		if (from >= to) {
+			return;
+		}
+
+		result.startMergesort(numbers, from, to);
+
 		// SelectionSort Optimierung
 		if (numbers.length <= selectionSortSize) {
 			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
-		int[] helper =  new int[numbers.length];
+
+		int[] helper = new int[numbers.length];
 		sort(numbers, result, from, to, helper);
 	}
 
@@ -32,23 +39,9 @@ public class Mergesort extends SortAlgorithm {
 			return;
 		}
 		int mid = (from + to) / 2;
-		int[] sorted = Arrays.copyOfRange(numbers, from, to+1);
-		int[] subArray = Arrays.copyOfRange(numbers, from, to+1);
-		Arrays.sort(sorted);
-		if (Arrays.equals(sorted, subArray)) {
-			sort(numbers, result, from, mid, helper);
-			sort(numbers, result, mid + 1, to, helper);
-			return;
-		}
-
-		result.startMergesort(numbers, from, to);
-
-		// Recursive call
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
-
 		merge(numbers, from, mid, to, helper);
-
 		result.logPartialArray(numbers, from, to);
 	}
 

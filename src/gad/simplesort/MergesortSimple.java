@@ -15,6 +15,7 @@ public class MergesortSimple extends SortAlgorithm {
 		if (from >= to) {
 			return;
 		}
+
 		result.startMergesort(numbers, from, to);
 
 		// SelectionSort Optimierung
