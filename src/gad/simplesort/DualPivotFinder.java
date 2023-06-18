@@ -70,20 +70,34 @@ public interface DualPivotFinder {
 				return pivots;
 				 */
 				int[] indices = new int[2];
-				int x = numberOfConsideredElements;
+				int length = numberOfConsideredElements;
 
-				if (x < 3 || from >= to) {
+				if (length < 3 || from >= to) {
 					indices[0] = from;
 					indices[1] = to;
 					return indices;
 				}
 
-				int[] sortedIndices = new int[x];
-				for (int i = 0; i < x; i++) {
-					sortedIndices[i] = from + i;
+				int[] temp;
+
+				int gapSize = (to - from) / (numberOfConsideredElements - 1);
+
+				//System.out.println("Gap: " + gapSize);
+
+				// Edge cases
+				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				else {length = numberOfConsideredElements;}
+				if (length > numbers.length) {length = numbers.length;}
+
+				temp = new int[length];
+
+				int k = 0;
+				for (int i = from; i < numbers.length && k < length; i += gapSize) {
+					temp[k] = numbers[i];
+					k++;
 				}
 
-				Arrays.sort(sortedIndices);
+				Arrays.sort(temp);
 				// Insertion Sort, um die Indizes basierend auf den Elementwerten zu sortieren
 				/*
 				for (int i = 1; i < x; i++) {
@@ -100,8 +114,8 @@ public interface DualPivotFinder {
 
 				 */
 
-				int smallerPivotIndex = from + x / 3 - 1;
-				int largerPivotIndex = from + 2 * x / 3 - 1;
+				int smallerPivotIndex = from + length / 3 - 1;
+				int largerPivotIndex = from + 2 * length / 3 - 1;
 
 				indices[0] = smallerPivotIndex;
 				indices[1] = largerPivotIndex;
