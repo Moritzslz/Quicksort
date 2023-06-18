@@ -42,8 +42,6 @@ public class Mergesort extends SortAlgorithm {
 		}
 
 		int mid = (from + to) / 2;
-		sort(numbers, result, from, mid, helper);
-		sort(numbers, result, mid + 1, to, helper);
 
 		// Merging
 		int indexL = from;
@@ -72,6 +70,10 @@ public class Mergesort extends SortAlgorithm {
 		}
 
 		result.logPartialArray(numbers, from, to);
+
+		// Recursive call
+		sort(numbers, result, from, mid, helper);
+		sort(numbers, result, mid + 1, to, helper);
 	}
 
 	@Override
