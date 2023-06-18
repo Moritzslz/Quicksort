@@ -3,6 +3,8 @@ package gad.simplesort;
 import java.util.Arrays;
 
 public class MedianFinder {
+
+    public MedianFinder() {}
     public static int getMedian(int[] array) {
         int median;
         Arrays.sort(array);
