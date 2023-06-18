@@ -6,14 +6,10 @@ public class Mergesort extends SortAlgorithm {
 	private int selectionSortSize;
 	private Selectionsort selectionSort;
 
-	private MergesortSimple mergesortSimple;
-
 	public Mergesort(int selectionSortSize) {
 		this.selectionSortSize = selectionSortSize;
 		// TODO: Selectionsort Optimierung
 		selectionSort = new Selectionsort();
-		mergesortSimple = new MergesortSimple(selectionSortSize);
-
 	}
 
 	@Override
@@ -42,6 +38,12 @@ public class Mergesort extends SortAlgorithm {
 
 		// Check is subarray is already in order
 		if (isSorted(numbers, from, to)) {
+			return;
+		}
+
+		// SelectionSort Optimierung
+		if (to - from + 1 <= selectionSortSize) {
+			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
 
