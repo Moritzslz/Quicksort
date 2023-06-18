@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class MedianFinder {
 
+    private MedianFinder () {}
     public static int getMedian(int[] array) {
         int median;
         Arrays.sort(array);

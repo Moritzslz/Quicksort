@@ -69,7 +69,7 @@ public interface DualPivotFinder {
 				} else {
 					if ((bufArray.length-2) % 3 == 2) {
 						piv2 = bufArray[2 * stepLength + 2];
-					} else piv2 = bufArray[2 * stepLength + 1];
+					} else { piv2 = bufArray[2 * stepLength + 1]; }
 				}
 
 
@@ -87,7 +87,7 @@ public interface DualPivotFinder {
 						break;
 					}
 				}
-				if (rs2 == -1) rs2 = rs1;
+				if (rs2 == -1) {rs2 = rs1;}
 
 				piv1 = Math.min(rs1, rs2);
 				piv2 = Math.max(rs1, rs2);
@@ -112,7 +112,7 @@ public interface DualPivotFinder {
 				int range = to - from;
 				int steplength = range / (numberOfConsideredElements-1);
 				int steps = 0;
-				if (numbers.length == numberOfConsideredElements) steplength = 1;
+				if (numbers.length == numberOfConsideredElements) {steplength = 1;}
 				int[] bufArray = new int[lowerBound];
 
 				for (int runner = from; steps < bufArray.length && runner < numbers.length; runner += steplength) {
