@@ -22,10 +22,12 @@ public class Mergesort extends SortAlgorithm {
 
 		// SelectionSort Optimierung
 		if (to - from + 1 <= selectionSortSize) {
+			result.logPartialArray(numbers, from, to);
 			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
 
+		// Check is array is already in order
 		if (isSorted(numbers, from, to)) {
 			return;
 		}
@@ -52,6 +54,11 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public void merge(int[] numbers, int left, int mid, int right, int[] helper) {
+		// Check is subarray is already in order
+		if (isSorted(numbers, left, right)) {
+			return;
+		}
+
 		int indexL = left;
 		int indexR = mid + 1;
 		int length = right - left + 1;
