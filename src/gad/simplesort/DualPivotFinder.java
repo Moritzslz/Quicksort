@@ -116,18 +116,40 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				int[] indices = new int[numberOfConsideredElements];
-				for (int i = 0; i < numberOfConsideredElements; i++) {
-					indices[i] = from + i;
+				int[] indices = new int[2];
+				int x = numberOfConsideredElements;
+
+				if (x < 3 || from >= to) {
+					indices[0] = from;
+					indices[1] = to;
+					return indices;
 				}
 
-				// Sort the indices based on the corresponding values in numbers
-				Arrays.sort(indices);
+				int[] sortedIndices = new int[x];
+				for (int i = 0; i < x; i++) {
+					sortedIndices[i] = (int) (Math.random() * (to - from + 1) + from);  // Zufällige Auswahl von Indizes
+				}
 
-				int pivot1 = indices[(numberOfConsideredElements - 1) / 3];
-				int pivot2 = indices[(2 * (numberOfConsideredElements - 1)) / 3];
+				// Insertion Sort, um die Indizes basierend auf den Elementwerten zu sortieren
+				for (int i = 1; i < x; i++) {
+					int index = sortedIndices[i];
+					int j = i - 1;
 
-				return new int[]{pivot1, pivot2};
+					while (j >= 0 && numbers[sortedIndices[j]] > numbers[index]) {
+						sortedIndices[j + 1] = sortedIndices[j];
+						j--;
+					}
+
+					sortedIndices[j + 1] = index;
+				}
+
+				int smallerPivotIndex = sortedIndices[x / 3 - 1];
+				int largerPivotIndex = sortedIndices[2 * x / 3 - 1];
+
+				indices[0] = smallerPivotIndex;
+				indices[1] = largerPivotIndex;
+
+				return indices;
 			}
 
 			@Override
