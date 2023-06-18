@@ -55,6 +55,11 @@ public interface DualPivotFinder {
 				int[] pivots = new int[2];
 				int length;
 
+				if (numberOfConsideredElements <= 3 || to - from + 1 <= 3) {
+					pivots[0] = from;
+					pivots[1] = to;
+				}
+
 				int gapSize = (to - from) / (numberOfConsideredElements - 1);
 
 				// Edge cases
