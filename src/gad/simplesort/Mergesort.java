@@ -14,20 +14,6 @@ public class Mergesort extends SortAlgorithm {
 
 	@Override
 	public void sort(int[] numbers, Result result, int from, int to) {
-		result.startMergesort(numbers, from, to);
-
-		// Check is array is already in order
-		if (isSorted(numbers, from, to)) {
-			return;
-		}
-
-		// SelectionSort Optimierung
-		if (to - from + 1 <= selectionSortSize) {
-			result.logPartialArray(numbers, from, to);
-			selectionSort.sort(numbers, result, from, to);
-			return;
-		}
-
 		int[] helper = new int[numbers.length];
 		sort(numbers, result, from, to, helper);
 	}
@@ -37,8 +23,16 @@ public class Mergesort extends SortAlgorithm {
 			return;
 		}
 
+		result.startMergesort(numbers, from, to);
+
 		// Check is subarray is already in order
 		if (isSorted(numbers, from, to)) {
+			return;
+		}
+
+		// SelectionSort Optimierung
+		if (to - from + 1 <= selectionSortSize) {
+			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
 
