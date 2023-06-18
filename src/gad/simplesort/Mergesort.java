@@ -27,9 +27,12 @@ public class Mergesort extends SortAlgorithm {
 			return;
 		}
 
-		// Check is array is already in order
-		if (isSorted(numbers, from, to)) {
+		// Check is subarray is already in order; if not reset from to first unordered index
+		int index = isSorted(numbers, from, to);
+		if (index == -1) {
 			return;
+		} else {
+			from = index;
 		}
 
 		int[] helper = new int[numbers.length];
@@ -41,9 +44,12 @@ public class Mergesort extends SortAlgorithm {
 			return;
 		}
 
-		// Check is subarray is already in order
-		if (isSorted(numbers, from, to)) {
+		// Check is subarray is already in order; if not reset from to first unordered index
+		int index = isSorted(numbers, from, to);
+		if (index == -1) {
 			return;
+		} else {
+			from = index;
 		}
 
 		int mid = (from + to) / 2;
@@ -54,10 +60,6 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public void merge(int[] numbers, int left, int mid, int right, int[] helper) {
-		// Check is subarray is already in order
-		if (isSorted(numbers, left, right)) {
-			return;
-		}
 
 		int indexL = left;
 		int indexR = mid + 1;
@@ -85,15 +87,15 @@ public class Mergesort extends SortAlgorithm {
 		}
 	}
 
-	public boolean isSorted (int[] numbers, int from, int to) {
-		boolean isSorted = true;
+	public int isSorted (int[] numbers, int from, int to) {
+		int index = -1;
 		for (int i = from + 1; i <= to; i++) {
 			if (numbers[i-1] >= numbers[i]) {
-				isSorted = false;
+				index = i - 1;
 				break;
 			}
 		}
-		return isSorted;
+		return index;
 	}
 
 	@Override
