@@ -37,6 +37,7 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public void sort(int[] numbers, Result result, int from, int to, int[] helper) {
+		result.logPartialArray(numbers, from, to);
 		if (from >= to) {
 			return;
 		}
@@ -50,7 +51,7 @@ public class Mergesort extends SortAlgorithm {
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
 		merge(numbers, from, mid, to, helper);
-		result.logPartialArray(numbers, from, to);
+		//result.logPartialArray(numbers, from, to);
 	}
 
 	public void merge(int[] numbers, int left, int mid, int right, int[] helper) {
