@@ -66,7 +66,7 @@ public interface DualPivotFinder {
 					pivots[0] = from;
 					pivots[1] = from + 1;
 				} else if (numberOfConsideredElements <= 3) {
-					int gap = (to - from + 1) / numberOfConsideredElements;
+					int gap = to - from / (numberOfConsideredElements-1);
 					pivots[0] = from + gap;
 					pivots[1] = from + 2 * gap;
 				}
@@ -149,7 +149,7 @@ public interface DualPivotFinder {
 					pivots[0] = from;
 					pivots[1] = from + 1;
 				} else if (numberOfConsideredElements <= 3) {
-					int gap = (to - from + 1) / numberOfConsideredElements;
+					int gap = to - from / (numberOfConsideredElements-1);
 					pivots[0] = from + gap;
 					pivots[1] = from + 2 * gap;
 				}
