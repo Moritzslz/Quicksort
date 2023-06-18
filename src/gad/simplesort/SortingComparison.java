@@ -21,8 +21,57 @@ public final class SortingComparison {
     }
 
     public static void main(String[] args) {
+
+        int[] numbers = new int[] {9, 1, 8, 5, 2, 3, 4, 6, 0, 7};
+        /*
+        int length = 10;
+        int leftPivot = 3;
+        int rightPivot = 5;
+        int[] left = new int[10];
+        int[] middle = new int[10];
+        int[] right = new int[10];
+        int l = 0;
+        int m = 0;
+        int r = 0;
+
+        for (int i = 0; i < length; i++) {
+            if (numbers[i] < leftPivot) {
+                // Element less than left pivot
+                left[l] = numbers[i];
+                l++;
+            } else if (numbers[i] > rightPivot) {
+                // Element bigger than right pivot
+                right[r] = numbers[i];
+                r++;
+            } else {
+                // Element >= left pivot but <= right pivot
+                middle[m] = numbers[i];
+                m++;
+            }
+        }
+
+        System.out.println("Left " + Arrays.toString(left));
+        System.out.println("Middle " + Arrays.toString(middle));
+        System.out.println("Right " + Arrays.toString(right));
+        // Reordering the numbers array according to the now sorted sub arrays
+        System.arraycopy(left, 0, numbers, 0, l);
+        System.arraycopy(middle, 0, numbers, l, m);
+        System.arraycopy(right, 0, numbers, l + m, r);
+
+        System.out.println("New Array " + Arrays.toString(numbers));
+
+         */
+
+        StudentResult result = new StudentResult();
+        DualPivotQuicksort dualPivotQuicksort = new DualPivotQuicksort(DualPivotFinder.getFirstLastPivot(), 0);
+        dualPivotQuicksort.sort(numbers , result, 0, 9);
+
+
+
+
+
         // comparePivotSelectionQuicksort();
-        compareMergesortHelperArray();
+        // compareMergesortHelperArray();
         // compareDualPivotQuicksort();
         // comparePivotSelectionDualPivotQuicksort();
         // compareSelectionSortSizeQuicksort();
