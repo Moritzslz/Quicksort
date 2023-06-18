@@ -18,6 +18,11 @@ public class Mergesort extends SortAlgorithm {
 
 	@Override
 	public void sort(int[] numbers, Result result, int from, int to) {
+		// SelectionSort Optimierung
+		if (numbers.length <= selectionSortSize) {
+			selectionSort.sort(numbers, result, from, to);
+			return;
+		}
 		int[] helper =  new int[numbers.length];
 		sort(numbers, result, from, to, helper);
 	}
@@ -35,12 +40,6 @@ public class Mergesort extends SortAlgorithm {
 		}
 
 		result.startMergesort(numbers, from, to);
-
-		// SelectionSort Optimierung
-		if (numbers.length <= selectionSortSize) {
-			selectionSort.sort(numbers, result, from, to);
-			return;
-		}
 
 		int mid = (from + to) / 2;
 
