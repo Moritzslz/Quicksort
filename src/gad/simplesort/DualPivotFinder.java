@@ -52,18 +52,22 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
-				int[] indices = new int[numberOfConsideredElements];
-				for (int i = 0; i < numberOfConsideredElements; i++) {
-					indices[i] = from + i;
+				int[] pivots = new int[2];
+				int[] temp = new int[numberOfConsideredElements];
+				int length;
+
+				int gapSize = (to - from) / (numberOfConsideredElements - 1);
+
+				// Edge cases
+				if (numberOfConsideredElements > to - from + 1) {length = to - from + 1;}
+				else {length = numberOfConsideredElements;}
+				if (length > numbers.length) {length = numbers.length;}
+
+				for (int i = 1; i <= pivots.length; i++) {
+					pivots[i-1] = numbers[from+gapSize * i];
 				}
 
-				// Sort the indices based on the corresponding values in numbers
-				Arrays.sort(indices);
-
-				int pivot1 = indices[(numberOfConsideredElements - 1) / 3];
-				int pivot2 = indices[(2 * (numberOfConsideredElements - 1)) / 3];
-
-				return new int[]{pivot1, pivot2};
+				return pivots;
 			}
 
 			@Override
