@@ -25,7 +25,7 @@ public class Mergesort extends SortAlgorithm {
 		result.startMergesort(numbers, from, to);
 
 		// SelectionSort Optimierung
-		if (numbers.length <= selectionSortSize) {
+		if (to - from + 1 <= selectionSortSize) {
 			selectionSort.sort(numbers, result, from, to);
 			return;
 		}
