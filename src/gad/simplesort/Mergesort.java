@@ -28,7 +28,6 @@ public class Mergesort extends SortAlgorithm {
 		// SelectionSort Optimierung
 		if (to - from + 1 <= selectionSortSize) {
 			selectionSort.sort(numbers, result, from, to);
-			result.logPartialArray(numbers, from, to);
 			return;
 		}
 
@@ -37,21 +36,20 @@ public class Mergesort extends SortAlgorithm {
 	}
 
 	public void sort(int[] numbers, Result result, int from, int to, int[] helper) {
-		result.logPartialArray(numbers, from, to);
 		if (from >= to) {
 			return;
 		}
 
 		// Check is subarray is already in order
-		if (isSorted(numbers, from, to)) {
-			return;
-		}
+		//if (isSorted(numbers, from, to)) {
+		//	return;
+		//}
 
 		int mid = (from + to) / 2;
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
 		merge(numbers, from, mid, to, helper);
-		//result.logPartialArray(numbers, from, to);
+		result.logPartialArray(numbers, from, to);
 	}
 
 	public void merge(int[] numbers, int left, int mid, int right, int[] helper) {
