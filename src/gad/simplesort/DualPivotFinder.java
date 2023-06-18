@@ -60,19 +60,16 @@ public interface DualPivotFinder {
 				if (length > numbers.length) {length = numbers.length;}
 
 				int gapSize = (to - from) / (numberOfConsideredElements - 1) - 1;
-				System.out.println("Gap: " + gapSize);
 
 				pivots[0] = from + gapSize;
 				pivots[1] = from + 2 * gapSize;
 
-				/*
-				if (pivots[0] > pivots[1]) {
+
+				if (numbers[pivots[0]] > numbers[pivots[1]]) {
 					int temp = pivots[0];
 					pivots[0] = pivots[1];
 					pivots[1] = temp;
 				}
-
-				 */
 
 				return pivots;
 			}
@@ -96,13 +93,13 @@ public interface DualPivotFinder {
 				else {length = numberOfConsideredElements;}
 				if (length > numbers.length) {length = numbers.length;}
 
-				int gapSize = length / (numberOfConsideredElements - 1);
-				System.out.println("Gap: " + gapSize);
+				int gapSize = (to - from) / (numberOfConsideredElements - 1) - 1;
 
-				pivots[0] = numbers[from + gapSize];
-				pivots[1] = numbers[from + 2 * gapSize];
+				pivots[0] = from + gapSize;
+				pivots[1] = from + 2 * gapSize;
 
-				if (pivots[0] > pivots[1]) {
+
+				if (numbers[pivots[0]] > numbers[pivots[1]]) {
 					int temp = pivots[0];
 					pivots[0] = pivots[1];
 					pivots[1] = temp;
