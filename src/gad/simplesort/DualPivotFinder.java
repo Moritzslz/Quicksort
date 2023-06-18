@@ -1,6 +1,7 @@
 package gad.simplesort;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 public interface DualPivotFinder {
@@ -51,6 +52,30 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
+				int[] pivots = new int[2];
+
+				if (to - from + 1 <= 3) {
+					pivots[0] = from;
+					pivots[1] = to;
+				}
+
+				if (numberOfConsideredElements == 5) {
+					pivots[0] = from;
+					pivots[1] = from + 1;
+				} else if (numberOfConsideredElements == 4) {
+					pivots[0] = from;
+					pivots[1] = from + 1;
+				} else if (numberOfConsideredElements <= 3) {
+					int gap = (to - from + 1) / numberOfConsideredElements;
+					pivots[0] = from + gap;
+					pivots[1] = from + 2 * gap;
+				}
+
+				if (pivots[1] == from) {
+					pivots[1] = pivots[0];
+				}
+				return pivots;
+				/*
 				// TODO
 				int lowerBound = Math.min(numberOfConsideredElements, to - from + 1);
 				int[] bufArray;
@@ -96,6 +121,7 @@ public interface DualPivotFinder {
 					piv2 = piv1;
 				}
 				return new int[] {piv1, piv2};
+				 */
 			}
 
 			@Override
@@ -109,6 +135,30 @@ public interface DualPivotFinder {
 		return new DualPivotFinder() {
 			@Override
 			public int[] findPivot(int[] numbers, int from, int to) {
+				int[] pivots = new int[2];
+
+				if (to - from + 1 <= 3) {
+					pivots[0] = from;
+					pivots[1] = to;
+				}
+
+				if (numberOfConsideredElements == 5) {
+					pivots[0] = from;
+					pivots[1] = from + 1;
+				} else if (numberOfConsideredElements == 4) {
+					pivots[0] = from;
+					pivots[1] = from + 1;
+				} else if (numberOfConsideredElements <= 3) {
+					int gap = (to - from + 1) / numberOfConsideredElements;
+					pivots[0] = from + gap;
+					pivots[1] = from + 2 * gap;
+				}
+
+				if (pivots[1] == from) {
+					pivots[1] = pivots[0];
+				}
+				return pivots;
+				/*
 				// TODO
 				int lowerBound = Math.min(numberOfConsideredElements, to - from + 1);
 				int range = to - from;
@@ -165,6 +215,8 @@ public interface DualPivotFinder {
 					piv2 = piv1;
 				}
 				return new int[] {piv1, piv2};
+
+				 */
 			}
 
 			@Override
