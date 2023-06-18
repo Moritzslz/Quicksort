@@ -47,9 +47,36 @@ public class Mergesort extends SortAlgorithm {
 		sort(numbers, result, from, mid, helper);
 		sort(numbers, result, mid + 1, to, helper);
 
-		mergesortSimple.merge(numbers, from, mid, to);
+		merge(numbers, from, mid, to, helper);
 
 		result.logPartialArray(numbers, from, to);
+	}
+
+	public void merge(int[] numbers, int left, int mid, int right, int[] helper) {
+		int indexL = left;
+		int indexR = mid + 1;
+		int length = right - left + 1;
+
+		for (int i = 0; i < length; i++) {
+			if (indexL > mid) { // linker Teil leer
+				helper[i] = numbers[indexR];
+				indexR++;
+			} else if (indexR > right) { // rechter Teil leer
+				helper[i] = numbers[indexL];
+				indexL++;
+			} else if (numbers[indexL] <= numbers[indexR]) {
+				helper[i] = numbers[indexL];
+				indexL++;
+			} else {
+				helper[i] = numbers[indexR];
+				indexR++;
+			}
+		}
+
+		// Zurückkopieren
+		for (int i = 0; i < length; i++) {
+			numbers[left + i] = helper[i];
+		}
 	}
 
 	@Override
