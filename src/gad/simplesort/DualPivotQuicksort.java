@@ -33,8 +33,6 @@ public class DualPivotQuicksort extends SortAlgorithm {
 
 		if (pivots[1] == from) {
 			pivots[1] = pivots[0];
-		} else if (pivots[0] == to) {
-			pivots[0] = pivots[1];
 		}
 
 		int leftPivot = pivots[0];
