@@ -31,17 +31,17 @@ public class Mergesort extends SortAlgorithm {
 		if (from >= to) {
 			return;
 		}
+		int mid = (from + to) / 2;
 		int[] sorted = Arrays.copyOfRange(numbers, from, to+1);
 		int[] subArray = Arrays.copyOfRange(numbers, from, to+1);
-
 		Arrays.sort(sorted);
 		if (Arrays.equals(sorted, subArray)) {
+			sort(numbers, result, from, mid, helper);
+			sort(numbers, result, mid + 1, to, helper);
 			return;
 		}
 
 		result.startMergesort(numbers, from, to);
-
-		int mid = (from + to) / 2;
 
 		// Recursive call
 		sort(numbers, result, from, mid, helper);
