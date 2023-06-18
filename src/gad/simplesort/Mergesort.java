@@ -18,11 +18,11 @@ public class Mergesort extends SortAlgorithm {
 
 	@Override
 	public void sort(int[] numbers, Result result, int from, int to) {
+		result.startMergesort(numbers, from, to);
+
 		if (isSorted(numbers, from, to)) {
 			return;
 		}
-
-		result.startMergesort(numbers, from, to);
 
 		// SelectionSort Optimierung
 		if (to - from + 1 <= selectionSortSize) {
@@ -78,7 +78,7 @@ public class Mergesort extends SortAlgorithm {
 		}
 	}
 
-	private boolean isSorted (int[] numbers, int from, int to) {
+	public boolean isSorted (int[] numbers, int from, int to) {
 		boolean isSorted = true;
 		for (int i = from + 1; i <= to; i++) {
 			if (numbers[i-1] >= numbers[i]) {
